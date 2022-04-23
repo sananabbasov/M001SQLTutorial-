@@ -30,7 +30,7 @@ where Products.Id = 4
 
  
 SELECT * FROM Products
-ORDER BY Products.Price ASC
+ORDER BY Products.Price    
 
 
 SELECT * FROM Products
