@@ -31,7 +31,7 @@ JOIN Category on Product.CategoryId = Category.Id
 SELECT Product.Name, Price, Color, Description, Category.Name 
 FROM Product
 JOIN Category on Product.CategoryId = Category.Id
-Where Category.Id = 1 
+Where Category.Id = 2 
 AND
 Product.Price >500 and Product.Price <3500
 
@@ -42,3 +42,19 @@ as select * from Product where Product.Price > @price
 
 
 EXEC FilterProducts @price = '65456546'
+
+
+
+Go
+create procedure GetProductCategoryPrice
+@CategoryId int, @MinPrice int, @MaxPrice int
+as 
+SELECT Product.Name, Price, Color, Description, Category.Name 
+FROM Product
+JOIN Category on Product.CategoryId = Category.Id
+Where Category.Id = @CategoryId 
+AND
+Product.Price > @MinPrice and Product.Price < @MaxPrice
+
+GO
+EXEC GetProductCategoryPrice @CategoryId = '1', @MinPrice='500', @MaxPrice= '1000'
